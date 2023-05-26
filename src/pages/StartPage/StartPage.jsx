@@ -79,9 +79,11 @@ function StartPage() {
 
   const handleClickNavigate = useCallback((event, ref) => {
     const clickfactory = getElementAtEvent(ref.current, event)?.[0];
-    const factory_id = clickfactory.datasetIndex + 1;
-    const month = clickfactory.index + 1;
-    navigate(`/details/${factory_id}/${month}`);
+    if (clickfactory) {
+      const factory_id = clickfactory.datasetIndex + 1;
+      const month = clickfactory.index + 1;
+      navigate(`/details/${factory_id}/${month}`);
+    }
   }, []);
 
   return (
